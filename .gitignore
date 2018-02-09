@@ -1,1 +1,8 @@
 /config/database.yml
+/log/development.log
+/.bundle
+/log/*
+!/log/.keep
+/tmp
+/.idea
+/.rvmrc
