@@ -9,6 +9,44 @@
   </head>
 
   <body>
+  <div class="container">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <a class="navbar-brand" href="#">Service desk</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav  pull-xs-right">
+          <% if user_signed_in? %>
+              <li class="nav-item">
+                <% link_to "Exit", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              </li>
+          <% else %>
+          <li class="nav-item">
+            <% link_to "Log in", new_user_session_patch, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <% link_to "Sigh up", new_user_registration_patch, class: "nav-link" %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+    <div class="container">
+      <div class="container main">
+        <div class="row">
+          <div class="row-md-1">
+            <% flash.each do |name, message| %>
+            <div class="alert <%= bootstrap_class_for(name)%>">
+              <button class="close" data-dismiss="alert">&times;</button>
+              <%= message %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
     <%= yield %>
+
   </body>
 </html>
