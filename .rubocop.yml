@@ -1,0 +1,60 @@
+# require: rubocop-rspec
+
+AllCops:
+  DisplayCopNames: true
+  StyleGuideCopsOnly: false
+  TargetRubyVersion: 2.3
+  Exclude:
+    - db/**/*
+    - script/**/*
+    - bin/**/*
+    - vendor/**/*
+    - tmp/**/*
+    - config/initializers/**/*
+    - config/environments/**/*
+    - config/application.rb
+    - config/routes.rb
+    - ./Gemfile
+    - ./Rakefile
+    - ./config.ru
+
+Rails:
+  Enabled: true
+
+Rails/Delegate:
+  Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundMethodBody:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Layout/EndOfLine:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Documentation:
+  Enabled: true
+
+Metrics/MethodLength:
+  Max: 20
