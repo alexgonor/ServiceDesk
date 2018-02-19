@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <h1 class="panel-heading">List of tickets</h1>
+  <div class="panel-body">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+      <tr>
+        <th>Status of ticket</th>
+        <th>Type of ticket</th>
+        <th>Title</th>
+        <th>Detailed description</th>
+        <th>Responsible unit</th>
+        <th>Author</th>
+        <th>Executor</th>
+        <th>Deadline</th>
+        <th>History</th>
+        <th>Attachment</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+      </tr>
+
+      <% @tickets.each do |ticket| %>
+        <tr>
+          <td><%= ticket.status_of_ticket %></td>
+          <td><%= ticket.type_of_ticket %></td>
+          <td><%= ticket.title %></td>
+          <td><%= ticket.detailed_description %></td>
+          <td><%= ticket.responsible_unit %></td>
+          <td><%= ticket.author %></td>
+          <td><%= ticket.executor %></td>
+          <td><%= ticket.deadline %></td>
+          <td><%= ticket.history %></td>
+          <td><%= ticket.attachment %></td>
+          <td><%= ticket.created_at %></td>
+          <td><%= ticket.updated_at %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

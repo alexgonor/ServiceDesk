@@ -1,5 +1,7 @@
 {
   "name": "ServiceDesk",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "popper.js": "^1.12.9"
+  }
 }
