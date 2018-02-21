@@ -1,0 +1,32 @@
+.panel.panel-default
+  %h1.panel-heading= t('list_of_tickets')
+  .panel-body
+    %table.table.table-striped.table-bordered.table-hover.table-condensed
+      %tr
+        %th= t('status_of_ticket')
+        %th= t('type_of_ticket')
+        %th= t('title')
+        %th= t('detailed_description')
+        %th= t('responsible_unit')
+        %th= t('author')
+        %th= t('executor')
+        %th= t('deadline')
+        %th= t('history')
+        %th= t('attachment')
+        %th= t('created_at')
+        %th= t('updated_at')
+      - @tickets.each do |ticket|
+        %tr
+          %td= ticket.status_of_ticket
+          %td= ticket.type_of_ticket
+          %td= ticket.title
+          %td= ticket.detailed_description
+          %td= ticket.responsible_unit
+          %td= ticket.author
+          %td= ticket.executor
+          %td= ticket.deadline
+          %td= ticket.history
+          %td= ticket.attachment
+          %td= ticket.created_at
+          %td= ticket.updated_at
+

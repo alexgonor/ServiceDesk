@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20180215154215) do
   enable_extension "plpgsql"
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "status"
-    t.integer "type"
+    t.integer "status_of_ticket"
+    t.integer "type_of_ticket"
     t.string "title"
     t.text "detailed_description"
     t.integer "responsible_unit"
