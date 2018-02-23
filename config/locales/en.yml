@@ -31,3 +31,16 @@
 
 en:
   hello: "Hello world"
+  list_of_tickets: "List of Tickets"
+  status_of_ticket: "Status of ticket"
+  type_of_ticket: "Type of ticket"
+  title: "Title"
+  detailed_description: "Detailed description"
+  responsible_unit: "Responsible unit"
+  author: "Author"
+  executor: "Executor"
+  deadline: "Deadline"
+  history: "History"
+  attachment: "Attachment"
+  created_at: "Created at"
+  updated_at: "Updated at"
