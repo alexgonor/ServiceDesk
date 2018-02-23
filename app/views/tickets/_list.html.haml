@@ -1,0 +1,35 @@
+#filterrific_results
+  %div
+    = page_entries_info @tickets
+  .panel.panel-default
+    %h1.panel-heading= t('tickets._list.list_of_tickets')
+    .panel-body
+      %table.table.table-striped.table-bordered.table-hover.table-condensed
+        %tr
+        %th= t('tickets._list.status_of_ticket')
+        %th= t('tickets._list.type_of_ticket')
+        %th= t('tickets._list.title')
+        %th= t('tickets._list.detailed_description')
+        %th= t('tickets._list.responsible_unit')
+        %th= t('tickets._list.author')
+        %th= t('tickets._list.executor')
+        %th= t('tickets._list.deadline')
+        %th= t('tickets._list.history')
+        %th= t('tickets._list.attachment')
+        %th= t('tickets._list.created_at')
+        %th= t('tickets._list.updated_at')
+        - @tickets.each do |ticket|
+          %tr
+            %td= ticket.status_of_ticket
+            %td= ticket.type_of_ticket
+            %td= ticket.title
+            %td= ticket.detailed_description
+            %td= ticket.responsible_unit
+            %td= ticket.author
+            %td= ticket.executor
+            %td= ticket.deadline
+            %td= ticket.history
+            %td= ticket.attachment
+            %td= ticket.created_at
+            %td= ticket.updated_at
+= will_paginate tickets

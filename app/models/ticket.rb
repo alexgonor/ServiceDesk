@@ -1,3 +1,4 @@
+# Ticket model
 class Ticket < ApplicationRecord
   belongs_to :user
 
@@ -9,4 +10,26 @@ class Ticket < ApplicationRecord
   validates :detailed_description, length: { minimum: 20, maximum: 200 }
   validates :deadline, presence: true
   validates :author, presence: true
+
+  filterrific(
+    available_filters: %i[
+      with_type_of_ticket
+      with_status_of_ticket
+      with_responsible_unit
+    ]
+  )
+  scope :with_type_of_ticket, lambda { |type_of_tickets|
+    return nil if type_of_tickets == [""]
+    where(type_of_ticket: [*type_of_tickets])
+  }
+
+  scope :with_status_of_ticket, lambda { |status_of_tickets|
+    return nil if status_of_tickets == [""]
+    where(status_of_ticket: [*status_of_tickets])
+  }
+
+  scope :with_responsible_unit, lambda { |responsible_units|
+    return nil if responsible_units == [""]
+    where(responsible_unit: [*responsible_units])
+  }
 end
