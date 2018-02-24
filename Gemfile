@@ -9,7 +9,9 @@ end
 gem 'rails', '~> 5.1.4'
 # Do some pretty to project
 gem 'bootstrap-sass'
+gem 'filterrific'
 gem 'haml'
+gem 'will_paginate'
 gem 'devise'
 gem 'jquery-rails'
 gem 'popper_js'
