@@ -4,8 +4,8 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <strong>Email:</strong>
+    <%= @user.email %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -34,6 +34,11 @@
   <div class="field">
     <%= f.label :position_in_the_company %><br />
     <%= f.text_field :position_in_the_company, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type_of_user %><br />
+    <%= f.select :type_of_user, User.type_of_users.keys %>
   </div>
 
   <div class="actions">

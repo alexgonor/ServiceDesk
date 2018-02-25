@@ -10,6 +10,7 @@ gem 'rails', '~> 5.1.4'
 # Do some pretty to project
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'haml'
 gem 'jquery-rails'
 gem 'popper_js'
 # Use postgresql as the database for Active Record

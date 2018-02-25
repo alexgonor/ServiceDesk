@@ -4,6 +4,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  enum type: %i[user executor]
+  enum type_of_user: %i[user executor]
   validates :position_in_the_company, presence: true
 end
