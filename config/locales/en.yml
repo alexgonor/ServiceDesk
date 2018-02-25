@@ -30,4 +30,23 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  tickets:
+    index:
+      filter_of_tickets: "Filter of tickets"
+      filter_type: "Type"
+      filter_status: "Status"
+      filter_responsible_unit: "Responsible unit"
+    _list:
+      list_of_tickets: "List of Tickets"
+      status_of_ticket: "Status of ticket"
+      type_of_ticket: "Type of ticket"
+      title: "Title"
+      detailed_description: "Detailed description"
+      responsible_unit: "Responsible unit"
+      author: "Author"
+      executor: "Executor"
+      deadline: "Deadline"
+      history: "History"
+      attachment: "Attachment"
+      created_at: "Created at"
+      updated_at: "Updated at"
