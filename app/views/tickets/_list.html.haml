@@ -3,6 +3,7 @@
     = page_entries_info @tickets
   .panel.panel-default
     %h1.panel-heading= t('tickets._list.list_of_tickets')
+    = button_to "New", new_ticket_path, method: :get
     .panel-body
       %table.table.table-striped.table-bordered.table-hover.table-condensed
         %tr
@@ -29,7 +30,7 @@
             %td= ticket.executor
             %td= ticket.deadline
             %td= ticket.history
-            %td= ticket.attachment
+            %td= image_tag(ticket.avatar_url) if ticket.avatar?
             %td= ticket.created_at
             %td= ticket.updated_at
 = will_paginate tickets

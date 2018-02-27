@@ -1,4 +1,3 @@
-# Tickets controller
 class TicketsController < ApplicationController
 
   def index
@@ -24,11 +23,27 @@ class TicketsController < ApplicationController
     redirect_to(reset_filterrific_url(format: :html)) && return
   end
 
+  def new
+    @ticket = Ticket.new
+  end
+
+  def create
+    # @ticket = Ticket.new(ticket_params)
+    @ticket = current_user.tickets.new(ticket_params)
+re
+    if @ticket.save
+      redirect_to tickets_path
+    else
+      render 'new'
+    end
+  end
+
   private
 
   def ticket_params
     params.require(:ticket).permit(:title, :detailed_description, :type_of_ticket, :author, :executor, :deadline,
-                                   :history, :status_of_ticket, :responsible_unit, :attachment)
+                                   :history, :status_of_ticket, :responsible_unit, :avatar)
   end
+
 
 end
