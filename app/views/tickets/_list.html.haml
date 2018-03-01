@@ -26,11 +26,11 @@
             %td= ticket.title
             %td= ticket.detailed_description
             %td= ticket.responsible_unit
-            %td= ticket.author
+            %td= ticket.user.email
             %td= ticket.executor
             %td= ticket.deadline
             %td= ticket.history
-            %td= image_tag(ticket.avatar_url) if ticket.avatar?
+            %td= image_tag(ticket.attachment_url) if ticket.attachment?
             %td= ticket.created_at
             %td= ticket.updated_at
 = will_paginate tickets

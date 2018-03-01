@@ -8,24 +8,24 @@ end
 gem "rails", "~> 5.1.4"
 
 gem "bootstrap-sass"
+gem "carrierwave", "~> 1.0"
 gem "coffee-rails", "~> 4.2"
 gem "devise"
 gem "filterrific"
 gem "haml"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
+gem "mini_magick"
 gem "pg", "~> 0.18"
 gem "popper_js"
 gem "puma", "~> 3.7"
 gem "rails_12factor"
+gem "rmagick"
 gem "sass-rails", "~> 5.0"
 gem "therubyracer", platforms: :ruby
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "will_paginate"
-gem "carrierwave", "~> 1.0"
-gem "rmagick"
-gem "mini_magick"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]

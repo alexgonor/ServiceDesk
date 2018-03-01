@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
 
+  before_action :ticket, only: [:new]
+
   def index
     (@filterrific = initialize_filterrific(
       Ticket,
@@ -23,14 +25,11 @@ class TicketsController < ApplicationController
     redirect_to(reset_filterrific_url(format: :html)) && return
   end
 
-  def new
-    @ticket = Ticket.new
-  end
+  def new; end
 
   def create
-    # @ticket = Ticket.new(ticket_params)
-    @ticket = current_user.tickets.new(ticket_params)
-re
+    @ticket = current_user.tickets.create(ticket_params)
+
     if @ticket.save
       redirect_to tickets_path
     else
@@ -41,9 +40,15 @@ re
   private
 
   def ticket_params
-    params.require(:ticket).permit(:title, :detailed_description, :type_of_ticket, :author, :executor, :deadline,
-                                   :history, :status_of_ticket, :responsible_unit, :avatar)
+    params.require(:ticket).permit(:title, :detailed_description, :type_of_ticket, :executor, :deadline,
+                                   :history, :status_of_ticket, :responsible_unit, :attachment)
   end
 
+  def ticket
+    @ticket ||= tickets_collection.new
+  end
 
+  def tickets_collection
+    Ticket
+  end
 end

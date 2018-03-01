@@ -13,22 +13,18 @@
     %br/
     = form.text_field :title, :maxlength=>"75"
   %p
-    = form.label :author
-    %br/
-    = form.text_field :author, :maxlength=>"75"
-  %p
     = form.label :type_of_ticket
     %br/
-    = select_tag(:type_of_ticket, options_for_select(type_of_ticket_options, :repaire ))
+    = form.select :type_of_ticket, Ticket.type_of_tickets.keys
   %p
     = form.label :responsible_unit
     %br/
-    = select_tag(:responsible_unit, options_for_select(responsible_unit_options, :repaire ))
+    = form.select :responsible_unit, Ticket.responsible_units.keys
   %p
   .form-group
     = form.label :detailed_description
     %br/
-    = form.text_area :detailed_description, size: "75x10", class: "form-control"
+    = form.text_area :detailed_description, size: "200x10", class: "form-control"
   %p
     = form.label :deadline
     %br/
@@ -36,7 +32,7 @@
   %p
     = form.label :attachment
     %br/
-    = form.file_field :avatar
+    = form.file_field :attachment
   %p
     = form.submit
 = link_to 'Back', tickets_path
