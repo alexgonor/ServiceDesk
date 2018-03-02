@@ -1,5 +1,6 @@
 # Tickets controller
 class TicketsController < ApplicationController
+  before_action :find_ticket, only: %i[edit update]
 
   def index
     (@filterrific = initialize_filterrific(
@@ -24,7 +25,21 @@ class TicketsController < ApplicationController
     redirect_to(reset_filterrific_url(format: :html)) && return
   end
 
+  def edit; end
+
+  def update
+    if @ticket.update(ticket_params)
+      redirect_to tickets_path
+    else
+      render "edit"
+    end
+  end
+
   private
+
+  def find_ticket
+    @ticket = Ticket.find(params[:id])
+  end
 
   def ticket_params
     params.require(:ticket).permit(:title, :detailed_description, :type_of_ticket, :author, :executor, :deadline,
