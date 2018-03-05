@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
 
-  before_action :ticket, only: [:new]
+  before_action :ticket, only: :new
 
   def index
     (@filterrific = initialize_filterrific(
@@ -45,10 +45,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket
-    @ticket ||= tickets_collection.new
-  end
-
-  def tickets_collection
-    Ticket
+    @ticket ||= Ticket.new
   end
 end

@@ -30,7 +30,10 @@
             %td= ticket.executor
             %td= ticket.deadline
             %td= ticket.history
-            %td= image_tag(ticket.attachment_url) if ticket.attachment?
+            %td
+              = image_tag(ticket.attachment_url) if ticket.attachment?
+              %br
+              = link_to 'Download file', ticket.attachment.url
             %td= ticket.created_at
             %td= ticket.updated_at
 = will_paginate tickets

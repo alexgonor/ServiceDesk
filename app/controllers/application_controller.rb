@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def set_current_user
+  def initialize_current_user
     User.current = current_user
   end
 end
