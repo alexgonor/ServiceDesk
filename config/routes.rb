@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root 'tickets#index'
 
   scope "(:locale)", locale: /en/ do
-    resources :tickets, only: [:index]
+    resources :tickets, only: [:index, :new, :create]
   end
 
   get '/:locale' => 'tickets#index'
+
 end
