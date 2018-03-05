@@ -8,7 +8,7 @@ class Ticket < ApplicationRecord
 
   validates :title, length: { minimum: 10, maximum: 100 }, presence: true, uniqueness: true
   validates :detailed_description, length: { minimum: 20, maximum: 200 }
-  validates :deadline, :title, :type_of_ticket, :responsible_unit, :attachment, presence: true
+  validates :deadline, :type_of_ticket, :responsible_unit, :attachment, presence: true
 
 
   mount_uploader :attachment, AttachmentUploader
