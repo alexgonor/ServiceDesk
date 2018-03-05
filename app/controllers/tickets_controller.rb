@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-
+  before_action :find_ticket, only: %i[edit update]
   before_action :ticket, only: :new
 
   def index
@@ -24,9 +24,9 @@ class TicketsController < ApplicationController
     logger.debug("Had to reset filterrific params: #{e.message}")
     redirect_to(reset_filterrific_url(format: :html)) && return
   end
-
+  
   def new; end
-
+  
   def create
     @ticket = current_user.tickets.create(ticket_params)
 
@@ -36,8 +36,22 @@ class TicketsController < ApplicationController
       render 'new'
     end
   end
+  
+  def edit; end
 
+  def update
+    if @ticket.update(ticket_params)
+      redirect_to tickets_path
+    else
+      render "edit"
+    end
+  end
+  
   private
+
+  def find_ticket
+    @ticket = Ticket.find(params[:id])
+  end
 
   def ticket_params
     params.require(:ticket).permit(:title, :detailed_description, :type_of_ticket, :executor, :deadline,

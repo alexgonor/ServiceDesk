@@ -19,6 +19,7 @@
         %th= t('tickets._list.attachment')
         %th= t('tickets._list.created_at')
         %th= t('tickets._list.updated_at')
+        %th= t('tickets._list.edit_ticket')
         - @tickets.each do |ticket|
           %tr
             %td= ticket.status_of_ticket
@@ -36,4 +37,5 @@
               = link_to 'Download file', ticket.attachment.url
             %td= ticket.created_at
             %td= ticket.updated_at
+            %td= button_to "Edit ticket", edit_ticket_path(@user, ticket), method: :get
 = will_paginate tickets

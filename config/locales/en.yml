@@ -50,3 +50,12 @@ en:
       attachment: "Attachment"
       created_at: "Created at"
       updated_at: "Updated at"
+      edit_ticket: "Edit ticket"
+
+    edit:
+      title: "Title"
+      type_of_ticket: "Type of ticket"
+      detailed_description: "Detailed description"
+      responsible_unit: "Responsible unit"
+      deadline: "Deadline"
+      attachment: "Attachment"
