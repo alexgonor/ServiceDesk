@@ -5,7 +5,6 @@ FactoryBot.define do
     title "1234567890"
     detailed_description "1234567890 1234567890"
     responsible_unit 1
-    author 1
     executor 1
     deadline "010119"
     history "MyText"

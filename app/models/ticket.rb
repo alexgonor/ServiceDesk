@@ -8,8 +8,10 @@ class Ticket < ApplicationRecord
 
   validates :title, length: { minimum: 10, maximum: 100 }, presence: true, uniqueness: true
   validates :detailed_description, length: { minimum: 20, maximum: 200 }
-  validates :deadline, presence: true
-  validates :author, presence: true
+  validates :deadline, :title, :type_of_ticket, :responsible_unit, :attachment, presence: true
+
+
+  mount_uploader :attachment, AttachmentUploader
 
   filterrific(
     available_filters: %i[
@@ -32,4 +34,5 @@ class Ticket < ApplicationRecord
     return nil if responsible_units == [""]
     where(responsible_unit: [*responsible_units])
   }
+
 end

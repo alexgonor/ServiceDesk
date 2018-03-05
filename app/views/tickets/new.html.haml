@@ -1,0 +1,38 @@
+= form_with scope: :ticket, url: tickets_path, local: true do |form|
+  - if @ticket.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@ticket.errors.count, "error")
+        prohibited
+        this ticket from being saved:
+      %ul
+        - @ticket.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = form.label :title
+    %br/
+    = form.text_field :title, :maxlength=>"75"
+  %p
+    = form.label :type_of_ticket
+    %br/
+    = form.select :type_of_ticket, Ticket.type_of_tickets.keys
+  %p
+    = form.label :responsible_unit
+    %br/
+    = form.select :responsible_unit, Ticket.responsible_units.keys
+  %p
+  .form-group
+    = form.label :detailed_description
+    %br/
+    = form.text_area :detailed_description, size: "200x10", class: "form-control"
+  %p
+    = form.label :deadline
+    %br/
+    = form.date_field :deadline
+  %p
+    = form.label :attachment
+    %br/
+    = form.file_field :attachment
+  %p
+    = form.submit
+= link_to 'Back', tickets_path
