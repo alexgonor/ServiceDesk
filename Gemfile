@@ -35,7 +35,6 @@ group :development, :test do
   gem "rspec-rails", "~> 3.7"
   gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 3.1"
-  gem "database_cleaner"
 end
 
 group :development do
