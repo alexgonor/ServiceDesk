@@ -19,14 +19,14 @@
         %th= t('tickets._list.attachment')
         %th= t('tickets._list.created_at')
         %th= t('tickets._list.updated_at')
-        %th= t('tickets._list.edit_ticket')
+        %th= t('tickets._list.available_actions')
         - @tickets.each do |ticket|
           %tr
             %td= ticket.status_of_ticket
-            %td= ticket.type_of_ticket
+            %td= ticket.type_of_ticket.humanize
             %td= ticket.title
             %td= ticket.detailed_description
-            %td= ticket.responsible_unit
+            %td= ticket.responsible_unit.humanize
             %td= ticket.user.email
             %td= ticket.executor
             %td= ticket.deadline
@@ -37,5 +37,9 @@
               = link_to 'Download file', ticket.attachment.url
             %td= ticket.created_at
             %td= ticket.updated_at
-            %td= button_to "Edit ticket", edit_ticket_path(@user, ticket), method: :get
+            %td
+              - if ticket_of_current_user?(ticket)
+                = button_to "Edit ticket", edit_ticket_path(@user, ticket), method: :get
+                %br
+                = button_to "Delete ticket", ticket_path(@user, ticket), method: :delete, data: { confirm: 'Are you sure?' }
 = will_paginate tickets
