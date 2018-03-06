@@ -1,4 +1,5 @@
-= form_with scope: :ticket, url: tickets_path, local: true do |form|
+%h1 Editing ticket
+= form_with(model: @ticket, url: ticket_path, method: :patch, local: true) do |form|
   - if @ticket.errors.any?
     #error_explanation
       %h2
@@ -15,20 +16,19 @@
   %p
     = form.label :type_of_ticket
     %br/
-    = form.select :type_of_ticket, Ticket.type_of_tickets.keys, { include_blank: '- Choose type -', multiple: true }
+    = form.select :type_of_ticket, Ticket.type_of_tickets.keys
   %p
     = form.label :responsible_unit
     %br/
-    = form.select :responsible_unit, Ticket.responsible_units.keys, { include_blank: '- Choose unit -', multiple: true }
+    = form.select :responsible_unit, Ticket.responsible_units.keys
   %p
-  .form-group
     = form.label :detailed_description
     %br/
     = form.text_area :detailed_description, size: "200x10", class: "form-control"
   %p
     = form.label :deadline
     %br/
-    = form.date_field :deadline, value: Time.now.strftime('%Y-%m-%d')
+    = form.date_field :deadline
   %p
     = form.label :attachment
     %br/
