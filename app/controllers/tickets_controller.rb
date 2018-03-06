@@ -1,6 +1,7 @@
 # Ticket controller
 class TicketsController < ApplicationController
   before_action :find_ticket, only: %i[edit update destroy]
+  before_action :owned_ticket, only: %i[edit update destroy]
   before_action :ticket, only: :new
 
   def index
@@ -74,5 +75,12 @@ class TicketsController < ApplicationController
 
   def ticket
     @ticket ||= Ticket.new
+  end
+
+  def owned_ticket
+    unless current_user == @ticket.user
+      flash[:alert] = "That ticket doesn't belong to you!"
+      redirect_to root_path
+    end
   end
 end
