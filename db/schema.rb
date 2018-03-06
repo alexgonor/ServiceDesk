@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20180301175259) do
     t.string "attachment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "avatar"
-    t.integer "user_id"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,8 +46,6 @@ ActiveRecord::Schema.define(version: 20180301175259) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "attachments"
-    t.string "attachment"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

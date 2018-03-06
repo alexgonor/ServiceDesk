@@ -8,7 +8,6 @@ RSpec.describe TicketsController, type: :controller do
     end
   end
 
-
   describe "PUT update" do
     before :each do
       @ticket = FactoryBot.create(:ticket)
@@ -31,18 +30,19 @@ RSpec.describe TicketsController, type: :controller do
   end
 
   describe "POST #create" do
-    let(:current_user){ create :user }
+    let(:current_user) { create :user }
 
     before do
       sign_in current_user
-      post :create, params: {
+      ticket :create, params: {
         ticket: {
-            title: "I broke my keyboard",
-            detailed_description: "My keyboard not working. Help me!",
-            type_of_ticket: :repaire,
-            responsible_unit: :repair,
-            deadline: Date.today,
-        }}
+          title: "I broke my keyboard",
+          detailed_description: "My keyboard not working. Help me!",
+          type_of_ticket: :repaire,
+          responsible_unit: :repair,
+          deadline: Time.zone.today
+        }
+      }
     end
 
     it "should response success" do
@@ -57,7 +57,29 @@ RSpec.describe TicketsController, type: :controller do
       expect(ticket.detailed_description).to eq("My keyboard not working. Help me!")
       expect(ticket.type_of_ticket).to eq(:repaire)
       expect(ticket.responsible_unit).to eq(:repaire)
-      expect(ticket.deadline).to eq(Date.today)
+      expect(ticket.deadline).to eq(Time.zone.today)
+    end
+  end
+
+  describe "#destroy" do
+    context "existing ticket" do
+      let!(:ticket) { FactoryBot.create(:ticket) }
+
+      it "removes ticket from table" do
+        expect { delete :destroy, params: { id: ticket } }.to change { Ticket.count }.by(-1)
+      end
+
+      it "renders index template" do
+        delete :destroy, params: { id: ticket }
+        expect(response).to render_template("index")
+      end
+    end
+
+    context "delete a non-existent ticket" do
+      it "creates an error message" do
+        delete :destroy, params: { id: 10_000 }
+        expect(flash[:warning]).to include("Ticket doesn't exist")
+      end
     end
   end
 end

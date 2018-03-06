@@ -50,7 +50,7 @@ en:
       attachment: "Attachment"
       created_at: "Created at"
       updated_at: "Updated at"
-      edit_ticket: "Edit ticket"
+      available_actions: "Available Actions"
 
     edit:
       title: "Title"
