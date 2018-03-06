@@ -33,11 +33,11 @@ class TicketsController < ApplicationController
     @ticket = current_user.tickets.create(ticket_params)
 
     if @ticket.save
-      flash[:success] = "Ticket created"
+      flash[:success] = 'Ticket created'
       redirect_to tickets_path
     else
-      flash[:warning] = "Ticket not created"
-      render "new"
+      flash[:warning] = 'Ticket not created'
+      render 'new'
     end
   end
 
@@ -45,17 +45,17 @@ class TicketsController < ApplicationController
 
   def update
     if @ticket.update(ticket_params)
-      flash[:success] = "Ticket updated"
+      flash[:success] = 'Ticket updated'
       redirect_to tickets_path
     else
-      flash[:warning] = "Ticket not updated"
-      render "edit"
+      flash[:warning] = 'Ticket not updated'
+      render 'edit'
     end
   end
 
   def destroy
     if @ticket.destroy
-      flash[:success] = "Ticket deleted"
+      flash[:success] = 'Ticket deleted'
       redirect_to tickets_path
     else
       flash[:warning] = "Ticket doesn't exist"
@@ -78,7 +78,7 @@ class TicketsController < ApplicationController
   end
 
   def owned_ticket
-    unless current_user == @ticket.user
+    if current_user.id != @ticket.user_id
       flash[:alert] = "That ticket doesn't belong to you!"
       redirect_to root_path
     end

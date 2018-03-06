@@ -20,17 +20,17 @@ class Ticket < ApplicationRecord
     ]
   )
   scope :with_type_of_ticket, lambda { |type_of_tickets|
-    return nil if type_of_tickets == [""]
+    return nil if type_of_tickets == ['']
     where(type_of_ticket: [*type_of_tickets])
   }
 
   scope :with_status_of_ticket, lambda { |status_of_tickets|
-    return nil if status_of_tickets == [""]
+    return nil if status_of_tickets == ['']
     where(status_of_ticket: [*status_of_tickets])
   }
 
   scope :with_responsible_unit, lambda { |responsible_units|
-    return nil if responsible_units == [""]
+    return nil if responsible_units == ['']
     where(responsible_unit: [*responsible_units])
   }
 

@@ -38,7 +38,7 @@
             %td= ticket.created_at
             %td= ticket.updated_at
             %td
-              - if ticket.user.id == current_user.id
+              - if ticket_of_current_user?(ticket)
                 = button_to "Edit ticket", edit_ticket_path(@user, ticket), method: :get
                 %br
                 = button_to "Delete ticket", ticket_path(@user, ticket), method: :delete, data: { confirm: 'Are you sure?' }
