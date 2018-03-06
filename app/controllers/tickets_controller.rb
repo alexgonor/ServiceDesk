@@ -1,4 +1,3 @@
-# Ticket controller
 class TicketsController < ApplicationController
   before_action :find_ticket, only: %i[edit update destroy]
   before_action :owned_ticket, only: %i[edit update destroy]
@@ -30,14 +29,14 @@ class TicketsController < ApplicationController
   def new; end
 
   def create
-    @ticket = current_user.tickets.create(ticket_params)
+    @ticket = current_user.tickets.new(ticket_params)
 
     if @ticket.save
       flash[:success] = 'Ticket created'
       redirect_to tickets_path
     else
       flash[:warning] = 'Ticket not created'
-      render 'new'
+      render :new
     end
   end
 
