@@ -1,0 +1,16 @@
+%p
+%h1= t('users.index.list_of_users')
+- @users.each do |user|
+  .panel.panel-primary
+    .panel-heading= user.username
+    .panel-body
+      - if user.avatar.url.present?
+        = image_tag(user.avatar.medium.url)
+      %ul
+        %li
+          Email: #{user.email}
+        %li
+          User ID: #{user.id}
+        %li
+          Last Signed In: #{user.last_sign_in_at.strftime('%H:%M:%S %B, %d, %Y')}
+    .panel-footer

@@ -8,7 +8,6 @@ RSpec.describe TicketsController, type: :controller do
     end
   end
 
-
   describe "PUT update" do
     before :each do
       @ticket = FactoryBot.create(:ticket)
@@ -31,18 +30,19 @@ RSpec.describe TicketsController, type: :controller do
   end
 
   describe "POST #create" do
-    let(:current_user){ create :user }
+    let(:current_user) { create :user }
 
     before do
       sign_in current_user
       post :create, params: {
         ticket: {
-            title: "I broke my keyboard",
-            detailed_description: "My keyboard not working. Help me!",
-            type_of_ticket: :repaire,
-            responsible_unit: :repair,
-            deadline: Date.today,
-        }}
+          title: "I broke my keyboard",
+          detailed_description: "My keyboard not working. Help me!",
+          type_of_ticket: :repaire,
+          responsible_unit: :repair,
+          deadline: Date.today
+        }
+      }
     end
 
     it "should response success" do

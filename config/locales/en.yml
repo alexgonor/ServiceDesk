@@ -59,3 +59,6 @@ en:
       responsible_unit: "Responsible unit"
       deadline: "Deadline"
       attachment: "Attachment"
+  users:
+    index:
+      list_of_users: "List of users"

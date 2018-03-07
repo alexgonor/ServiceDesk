@@ -24,19 +24,20 @@ class TicketsController < ApplicationController
     logger.debug("Had to reset filterrific params: #{e.message}")
     redirect_to(reset_filterrific_url(format: :html)) && return
   end
-  
+
   def new; end
-  
+
   def create
     @ticket = current_user.tickets.create(ticket_params)
+    @ticket.status_of_ticket = :newly_created
 
     if @ticket.save
       redirect_to tickets_path
     else
-      render 'new'
+      render "new"
     end
   end
-  
+
   def edit; end
 
   def update
@@ -46,7 +47,7 @@ class TicketsController < ApplicationController
       render "edit"
     end
   end
-  
+
   private
 
   def find_ticket

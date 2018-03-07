@@ -10,7 +10,11 @@
 
   <body>
     <% if user_signed_in? %>
+      <% if current_user.avatar.url.present? %>
+        <%= image_tag(current_user.avatar.thumb.url) %>
+      <% end %>
       <%= link_to "#{current_user.email} profile", edit_user_registration_path %>
+
       <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to 'Login', new_user_session_path %>
