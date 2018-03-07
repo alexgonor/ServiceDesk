@@ -1,0 +1,40 @@
+<h1>Ticket params</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @ticket.title %>
+</p>
+
+<p>
+  <strong>Status of ticket:</strong>
+  <%= @ticket.status_of_ticket %>
+</p>
+
+<p>
+  <strong>Type of ticket:</strong>
+  <%= @ticket.type_of_ticket.humanize %>
+</p>
+
+<p>
+  <strong>Detailed description:</strong>
+  <%= @ticket.detailed_description %>
+</p>
+
+<p>
+  <strong>Responsible unit:</strong>
+  <%= @ticket.responsible_unit.humanize %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @ticket.user.email %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @ticket.deadline %>
+</p>
+
+<%= render 'ticket', ticket: @ticket %>
+
+<%= link_to 'Back', tickets_path %>

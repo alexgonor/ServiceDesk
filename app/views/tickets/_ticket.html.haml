@@ -1,0 +1,27 @@
+.tickets-wrapper
+  .ticket
+    .ticket-head
+      .thumb-img
+      .user-name
+        = ticket.user.email
+    .image.center-block
+    .ticket-bottom
+      .caption
+        .user-name
+          = ticket.user.email
+      - if ticket.comments
+        - ticket.comments.each do |comment|
+          .comment
+            .user-name
+              = comment.user.email
+            .comment-content
+              = comment.content
+            - if comment.user == current_user
+              = link_to ticket_comment_path(ticket, comment), method: :delete, data: { confirm: "Are you sure?" } do
+                %span(class="glyphicon glyphicon-remove delete-comment")
+    .comment-like-form.row
+      .like-button.col-sm-1
+        %span(class="glyphicon glyphicon-heart-empty")
+      .comment-form.col-sm-11
+        = form_for [ticket, ticket.comments.new] do |f|
+          = f.text_field :content, placeholder: 'Add a comment...'

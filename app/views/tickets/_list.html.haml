@@ -38,6 +38,8 @@
             %td= ticket.created_at
             %td= ticket.updated_at
             %td
+              = button_to "Show ticket", ticket_path(@user, ticket), method: :get
+              %br
               - if ticket_of_current_user?(ticket)
                 = button_to "Edit ticket", edit_ticket_path(@user, ticket), method: :get
                 %br

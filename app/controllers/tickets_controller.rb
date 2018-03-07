@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :find_ticket, only: %i[edit update destroy]
+  before_action :find_ticket, only: %i[show edit update destroy]
   before_action :owned_ticket, only: %i[edit update destroy]
   before_action :ticket, only: :new
 
@@ -25,6 +25,8 @@ class TicketsController < ApplicationController
     logger.debug("Had to reset filterrific params: #{e.message}")
     redirect_to(reset_filterrific_url(format: :html)) && return
   end
+
+  def show; end
 
   def new; end
 
