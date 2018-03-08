@@ -13,4 +13,4 @@ class ApplicationController < ActionController::Base
   def initialize_current_user
     User.current = current_user
   end
- end
+end

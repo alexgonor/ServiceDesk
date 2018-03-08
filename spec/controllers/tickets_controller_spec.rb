@@ -35,7 +35,6 @@ RSpec.describe TicketsController, type: :controller do
       @current_user = FactoryBot.create :user
       sign_in @current_user
       post :create, params: {
-
           ticket: {
               title: 'I broke my keyboard',
               detailed_description: 'My keyboard not working. Help me!',
