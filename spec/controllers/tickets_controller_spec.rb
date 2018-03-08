@@ -29,28 +29,13 @@ RSpec.describe TicketsController, type: :controller do
     end
   end
 
-<<<<<<< HEAD
-  describe "POST #create" do
-    let(:current_user) { create :user }
-
-=======
   describe 'POST #create' do
     let(:current_user) { FactoryBot.create :user }
->>>>>>> 0465394a50461b9327c788536fce8354bf66c5d1
     before do
       @current_user = FactoryBot.create :user
       sign_in @current_user
       post :create, params: {
-<<<<<<< HEAD
-        ticket: {
-          title: "I broke my keyboard",
-          detailed_description: "My keyboard not working. Help me!",
-          type_of_ticket: :repaire,
-          responsible_unit: :repair,
-          deadline: Date.today
-        }
-      }
-=======
+
           ticket: {
               title: 'I broke my keyboard',
               detailed_description: 'My keyboard not working. Help me!',
@@ -75,7 +60,6 @@ RSpec.describe TicketsController, type: :controller do
       expect(ticket.type_of_ticket).to eq('repaire')
       expect(ticket.responsible_unit).to eq('repair')
       expect(ticket.deadline).to eq(Date.today)
->>>>>>> 0465394a50461b9327c788536fce8354bf66c5d1
     end
   end
 

@@ -29,7 +29,7 @@ class TicketsController < ApplicationController
   def new; end
 
   def create
-    @ticket = current_user.tickets.create(ticket_params)
+    @ticket = current_user.tickets.new(ticket_params)
     @ticket.status_of_ticket = :newly_created
 
     if @ticket.save
