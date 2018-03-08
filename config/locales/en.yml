@@ -59,3 +59,17 @@ en:
       responsible_unit: "Responsible unit"
       deadline: "Deadline"
       attachment: "Attachment"
+
+    show:
+      ticket_params: "Ticket params"
+      title: "Title"
+      status_of_ticket: "Status of ticket"
+      type_of_ticket: "Type of ticket"
+      detailed_description: "Detailed description"
+      responsible_unit: "Responsible unit"
+      author: "Author"
+      deadline: "Deadline"
+      comments: "Comments"
+      commenter: "Commenter"
+      add_a_comment: "Add a comment"
+      comment: "Comment"

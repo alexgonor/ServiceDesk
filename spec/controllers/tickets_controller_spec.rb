@@ -35,21 +35,21 @@ RSpec.describe TicketsController, type: :controller do
       @current_user = FactoryBot.create :user
       sign_in @current_user
       post :create, params: {
-          ticket: {
-              title: 'I broke my keyboard',
-              detailed_description: 'My keyboard not working. Help me!',
-              type_of_ticket: :repaire,
-              responsible_unit: :repair,
-              deadline: Date.today,
-              attachment: Rack::Test::UploadedFile.new(File.join('spec', 'support', 'files', 'test_image.jpg'))
-          }
+        ticket: {
+          title: 'I broke my keyboard',
+          detailed_description: 'My keyboard not working. Help me!',
+          type_of_ticket: :repaire,
+          responsible_unit: :repair,
+          deadline: Date.today,
+          attachment: Rack::Test::UploadedFile.new(File.join('spec', 'support', 'files', 'test_image.jpg'))
+        }
       }
-  end
+    end
 
-     it 'should response success' do
-       expect(response).to have_http_status(302)
-       expect(response.content_type).to eq('text/html')
-     end
+    it 'should response success' do
+      expect(response).to have_http_status(302)
+      expect(response.content_type).to eq('text/html')
+    end
 
     it 'should create new ticket' do
       ticket = @current_user.tickets.last
@@ -84,4 +84,3 @@ RSpec.describe TicketsController, type: :controller do
     end
   end
 end
-

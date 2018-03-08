@@ -1,0 +1,10 @@
+= form_with(model: [ @ticket, @ticket.comments.build ], remote: true) do |form|
+  %p
+    %strong Commenter:
+    = current_user.email
+  %p
+    = form.label :comment
+    %br/
+    = form.text_area :content, placeholder: 'Add a comment...', size: "50x5", class: "comment_content", id: "comment_content_#{@ticket.id}"
+  %p
+    = form.submit

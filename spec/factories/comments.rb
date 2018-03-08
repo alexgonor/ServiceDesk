@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    user nil
-    ticket nil
-    content "MyText"
+    user 1
+    ticket 1
+    content 'Good long enough comment'
   end
 end
