@@ -1,13 +1,15 @@
 class CommentsController < ApplicationController
-  before_action :find_ticket
+  before_action :find_ticket, only: %i[create destroy]
 
   def create
     @comment = @ticket.comments.build(comment_params)
     @comment.user_id = current_user.id
 
     if @comment.save
-      flash[:success] = 'You comment has been saved'
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to @ticket }
+        format.js
+      end
     else
       flash[:alert] = 'Something went wrong'
       render root_path
@@ -17,9 +19,13 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @ticket.comments.find(params[:id])
 
-    @comment.destroy
-    flash[:success] = 'Comment deleted'
-    redirect_to root_path
+    if @comment.user_id == current_user.id
+      @comment.delete
+      respond_to do |format|
+        format.html { redirect_to @ticket }
+        format.js
+      end
+    end
   end
 
   private
@@ -29,6 +35,6 @@ class CommentsController < ApplicationController
   end
 
   def find_ticket
-    @ticket = Post.find(params[:ticket_id])
+    @ticket = Ticket.find(params[:ticket_id])
   end
 end

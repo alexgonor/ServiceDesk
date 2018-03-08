@@ -26,7 +26,12 @@ class TicketsController < ApplicationController
     redirect_to(reset_filterrific_url(format: :html)) && return
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def new; end
 
