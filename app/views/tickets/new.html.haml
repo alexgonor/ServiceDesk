@@ -15,11 +15,11 @@
   %p
     = form.label :type_of_ticket
     %br/
-    = form.select :type_of_ticket, Ticket.type_of_tickets.keys
+    = form.select :type_of_ticket, Ticket.type_of_tickets.keys, { include_blank: '- Choose type -', multiple: true }
   %p
     = form.label :responsible_unit
     %br/
-    = form.select :responsible_unit, Ticket.responsible_units.keys
+    = form.select :responsible_unit, Ticket.responsible_units.keys, { include_blank: '- Choose unit -', multiple: true }
   %p
   .form-group
     = form.label :detailed_description
@@ -28,7 +28,7 @@
   %p
     = form.label :deadline
     %br/
-    = form.date_field :deadline
+    = form.date_field :deadline, value: Time.now.strftime('%Y-%m-%d')
   %p
     = form.label :attachment
     %br/

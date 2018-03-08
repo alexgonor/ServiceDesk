@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ServiceDesk</title>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <title>Service Desk</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -15,9 +16,17 @@
       <% end %>
       <%= link_to "#{current_user.email} profile", edit_user_registration_path %>
 
+      |
+      <%= link_to 'Tickets list', root_path %>
+      |
+
       <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to 'Login', new_user_session_path %>
+    <% end %>
+
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
 
     <%= yield %>
