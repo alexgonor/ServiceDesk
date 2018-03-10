@@ -32,9 +32,10 @@
             %td= ticket.deadline
             %td= ticket.history
             %td
-              = image_tag(ticket.attachment_url(:thumb)) if ticket.attachment?
-              %br
-              = link_to 'Download file', ticket.attachment.url
+              - if ticket.attachment?
+                = image_tag(ticket.attachment_url(:thumb))
+                %br
+                = link_to 'Download file', ticket.attachment.url
             %td= ticket.created_at
             %td= ticket.updated_at
             %td
