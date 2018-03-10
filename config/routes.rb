@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   scope "(:locale)", locale: /en/ do
     resources :users, only: [:index]
-    resources :tickets, except: :show
+    resources :tickets do
+      resources :comments
+    end
   end
 
   get '/:locale' => 'tickets#index'
