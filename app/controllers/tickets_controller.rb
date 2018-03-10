@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :find_ticket, only: %i[edit update destroy]
+  before_action :find_ticket, only: %i[show edit update destroy]
   before_action :owned_ticket, only: %i[edit update destroy]
   before_action :ticket, only: :new
 
@@ -24,6 +24,13 @@ class TicketsController < ApplicationController
   rescue ActiveRecord::RecordNotFound => e
     logger.debug("Had to reset filterrific params: #{e.message}")
     redirect_to(reset_filterrific_url(format: :html)) && return
+  end
+
+  def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new; end
