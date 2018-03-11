@@ -9,6 +9,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -29,6 +34,16 @@
   <div class="field">
     <%= f.label :type_of_user %><br />
     <%= f.select :type_of_user, User.type_of_users.keys %>
+  </div>
+
+  <div class="field">
+    <strong>Photo</strong>
+    <p>
+      <%= f.label :avatar do %>
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %>
+      <% end %>
+    </p>
   </div>
 
   <div class="actions">

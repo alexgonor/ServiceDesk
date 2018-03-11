@@ -37,6 +37,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = current_user.tickets.new(ticket_params)
+    @ticket.status_of_ticket = :newly_created
 
     if @ticket.save
       flash[:success] = 'Ticket created'

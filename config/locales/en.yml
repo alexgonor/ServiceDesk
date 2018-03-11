@@ -59,7 +59,7 @@ en:
       responsible_unit: "Responsible unit"
       deadline: "Deadline"
       attachment: "Attachment"
-
+      
     show:
       ticket_params: "Ticket params"
       title: "Title"
@@ -73,3 +73,7 @@ en:
       commenter: "Commenter"
       add_a_comment: "Add a comment"
       comment: "Comment"
+
+  users:
+    index:
+      list_of_users: "List of users"

@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   root 'tickets#index'
 
   scope "(:locale)", locale: /en/ do
+    resources :users, only: [:index]
     resources :tickets do
       resources :comments
     end
   end
 
   get '/:locale' => 'tickets#index'
+
 
 end
