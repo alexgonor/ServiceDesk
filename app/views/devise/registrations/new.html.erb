@@ -1,54 +1,67 @@
-<h2>Register</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p class="lead">Register</p>
+      </div>
+      <div class="panel-body">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+
+          <div class="form-group">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :position_in_the_company %><br />
+            <%= f.text_field :position_in_the_company, autocomplete: "off" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :type_of_user %><br />
+            <%= f.select :type_of_user, User.type_of_users.keys %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :username %><br />
+            <%= f.text_field :username, autocomplete: "off" %>
+          </div>
+          <div class="form-group">
+            <strong>Photo</strong>
+            <p>
+              <%= f.label :avatar do %>
+                <%= f.file_field :avatar %>
+                <%= f.hidden_field :avatar_cache %>
+              <% end %>
+            </p>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Sign up", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+
+       </div>
+    </div>
+
+    <%= render "devise/shared/links" %>
+
   </div>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :position_in_the_company %><br />
-    <%= f.text_field :position_in_the_company, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :type_of_user %><br />
-    <%= f.select :type_of_user, User.type_of_users.keys %>
-  </div>
-
-  <div class="field">
-    <strong>Photo</strong>
-    <p>
-      <%= f.label :avatar do %>
-        <%= f.file_field :avatar %>
-        <%= f.hidden_field :avatar_cache %>
-      <% end %>
-    </p>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
