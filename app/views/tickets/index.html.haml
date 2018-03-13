@@ -1,23 +1,23 @@
-%h3= t('tickets.index.filter_of_tickets')
-= form_for_filterrific @filterrific do |f|
+.panel.panel-default
+  %h3.panel-heading= t('tickets.index.filter_of_tickets')
+  = form_for_filterrific @filterrific do |f|
+    %div
+      = t('tickets.index.filter_type')
+      \#{f.select( :with_type_of_ticket, @filterrific.select_options[:with_type_of_ticket], { include_blank: '- Any -', multiple: true } )}
 
-  %div
-    = t('tickets.index.filter_type')
-    \#{f.select( :with_type_of_ticket, @filterrific.select_options[:with_type_of_ticket], { include_blank: '- Any -', multiple: true } )}
+      = t('tickets.index.filter_status')
+      \#{f.select( :with_status_of_ticket, @filterrific.select_options[:with_status_of_ticket], { include_blank: '- Any -', multiple: true } )}
 
-    = t('tickets.index.filter_status')
-    \#{f.select( :with_status_of_ticket, @filterrific.select_options[:with_status_of_ticket], { include_blank: '- Any -', multiple: true } )}
+      = t('tickets.index.filter_responsible_unit')
+      \#{f.select( :with_responsible_unit, @filterrific.select_options[:with_responsible_unit], { include_blank: '- Any -', multiple: true } )}
 
-    = t('tickets.index.filter_responsible_unit')
-    \#{f.select( :with_responsible_unit, @filterrific.select_options[:with_responsible_unit], { include_blank: '- Any -', multiple: true } )}
-
-  %div
-    = link_to(                 |
-        'Reset filters',       |
-        reset_filterrific_url, |
-      )
-  = render_filterrific_spinner
-= render(                         |
-    partial: 'tickets/list',      |
-    locals: { tickets: @tickets } |
-  )                               |
+    %div
+      = link_to(                 |
+          'Reset filters',       |
+          reset_filterrific_url, |
+        )
+    = render_filterrific_spinner
+  = render(                         |
+      partial: 'tickets/list',      |
+      locals: { tickets: @tickets } |
+    )                               |

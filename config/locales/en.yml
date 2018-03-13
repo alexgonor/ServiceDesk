@@ -37,7 +37,7 @@ en:
       filter_status: "Status"
       filter_responsible_unit: "Responsible unit"
     _list:
-      list_of_tickets: "List of Tickets"
+      list_of_tickets: "List of tickets"
       status_of_ticket: "Status of ticket"
       type_of_ticket: "Type of ticket"
       title: "Title"
