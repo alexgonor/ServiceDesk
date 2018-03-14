@@ -27,7 +27,9 @@
             %td= ticket.title
             %td= ticket.detailed_description
             %td= ticket.responsible_unit
-            %td= ticket.user.email
+            %td
+              = ticket.user.username
+              = ticket.user.email
             %td= ticket.executor
             %td= ticket.deadline
             %td= ticket.history
