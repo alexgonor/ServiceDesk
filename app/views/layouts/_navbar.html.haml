@@ -7,6 +7,7 @@
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand{:href => "/"}
+        = image_tag("favicon.ico", size: "30x30", alt: "Service Desk" )
         Service Desk
     #navbar-collapse.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
@@ -25,7 +26,9 @@
           %li
             %a{:href => edit_user_registration_path}
               %span.glyphicon.glyphicon-user
-              Account
+              = current_user.username
+              %br
+                = current_user.email
           %li
             = link_to('Logout', destroy_user_session_path, :method => 'delete')
         - else
