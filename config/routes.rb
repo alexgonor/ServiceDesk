@@ -3,8 +3,12 @@ Rails.application.routes.draw do
 
   root 'tickets#index'
 
-  scope "(:locale)", locale: /en/ do
+  get "/admin" => "admin/users#index"
+  namespace :admin do
     resources :users, only: [:index]
+  end
+
+  scope "(:locale)", locale: /en/ do
     resources :tickets do
       resources :comments
     end

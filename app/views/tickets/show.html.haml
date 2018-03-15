@@ -1,29 +1,45 @@
-%h1 Ticket params
-%p
-  %strong Title:
-  = @ticket.title
-%p
-  %strong Status of ticket:
-  = @ticket.status_of_ticket
-%p
-  %strong Type of ticket:
-  = @ticket.type_of_ticket.humanize
-%p
-  %strong Detailed description:
-  = @ticket.detailed_description
-%p
-  %strong Responsible unit:
-  = @ticket.responsible_unit.humanize
-%p
-  %strong Author:
-  = @ticket.user.email
-%p
-  %strong Deadline:
-  = @ticket.deadline
-%h2 Comments
-.comments{:id => "comments_#{@ticket.id}"}
-  - if @ticket.comments
-    = render @ticket.comments, ticket: @ticket
-%h2 Add a comment:
-= render 'comments/form'
-= link_to 'Back', tickets_path
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      .panel.panel-default
+        .panel-heading
+          .lead Ticket params
+        .panel-body
+          .form-group
+            %p
+            %strong Title:
+            = @ticket.title
+          .form-group
+            %p
+              %strong Status of ticket:
+              = @ticket.status_of_ticket
+          .form-group
+            %p
+              %strong Type of ticket:
+              = @ticket.type_of_ticket.humanize
+          .form-group
+            %p
+              %strong Detailed description:
+              = @ticket.detailed_description
+          .form-group
+            %p
+              %strong Responsible unit:
+              = @ticket.responsible_unit.humanize
+          .form-group
+            %p
+              %strong Author:
+              = @ticket.user.email
+          .form-group
+            %p
+              %strong Deadline:
+              = @ticket.deadline
+          .form-group
+            %h4 Comments
+            .comments{:id => "comments_#{@ticket.id}"}
+              - if @ticket.comments
+                = render @ticket.comments, ticket: @ticket
+          .form-group
+            %h4 Add a comment:
+            = render 'comments/form'
+          .form-group
+            = link_to 'Back', tickets_path

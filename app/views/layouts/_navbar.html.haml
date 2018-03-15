@@ -1,0 +1,45 @@
+%nav.navbar.navbar-default{:role => "navigation"}
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %ul.nav.navbar-nav.navbar-left
+        %li
+          %a.navbar-brand{:href => "/"}
+            = image_tag("favicon.ico", size: "30x30", alt: "Service Desk" )
+        %li
+          %a.navbar-brand{:href => "/"}
+            Service Desk
+    #navbar-collapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li
+            %a{:href => new_ticket_path}
+              %span.glyphicon.glyphicon-plus
+              New ticket
+          %li
+            %a{:href => tickets_path}
+              %span.glyphicon.glyphicon-folder-open
+              Tickets list
+          %li
+            - if current_user.avatar.url.present?
+              = image_tag(current_user.avatar.thumb.url)
+          %li
+            %a{:href => edit_user_registration_path}
+              %span.glyphicon.glyphicon-user
+              = current_user.username
+          %li
+            = link_to('Logout', destroy_user_session_path, :method => 'delete')
+              
+        - else
+          %li
+            %a{:href => new_user_registration_path}
+              %span.glyphicon.glyphicon-user
+              Sign Up
+          %li.active
+            %a{:href => new_user_session_path}
+              %span.glyphicon.glyphicon-log-in
+              Login
