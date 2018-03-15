@@ -40,6 +40,7 @@ class TicketsController < ApplicationController
     @ticket.status_of_ticket = :newly_created
 
     if @ticket.save
+      UserMailer.ticket_email(@current_user).deliver
       flash[:success] = 'Ticket created'
       redirect_to tickets_path
     else
