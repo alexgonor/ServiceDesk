@@ -16,7 +16,4 @@ Rails.application.routes.draw do
 
   get '/:locale' => 'tickets#index'
 
-  get '/google48cbf43525481345.html' => proc { |env| [200, {}, ["google-site-verification: google48cbf43525481345.html"]] }
-
-
 end
