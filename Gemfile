@@ -22,9 +22,12 @@ gem "puma", "~> 3.7"
 gem "rails_12factor"
 gem "rmagick"
 gem "sass-rails", "~> 5.0"
+gem 'sidekiq'
+gem 'sidekiq-client-cli'
 gem "therubyracer", platforms: :ruby
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem 'whenever'
 gem "will_paginate"
 
 group :development, :test do

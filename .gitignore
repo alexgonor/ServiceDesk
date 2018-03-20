@@ -1,4 +1,5 @@
 /config/database.yml
+/config/client_secret.json
 /log/development.log
 /.bundle
 /log/*
