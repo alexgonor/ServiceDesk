@@ -9,7 +9,15 @@
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
 
+          <div class="form-group">
+            <%= f.label :username %><br />
+            <%= f.text_field :username, autocomplete: "off" %>
+          </div>
 
           <div class="form-group">
             <%= f.label :password %>
@@ -34,15 +42,8 @@
             <%= f.select :type_of_user, User.type_of_users.keys %>
           </div>
 
-          <div class="form-group">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
 
-          <div class="form-group">
-            <%= f.label :username %><br />
-            <%= f.text_field :username, autocomplete: "off" %>
-          </div>
+
           <div class="form-group">
             <strong>Photo</strong>
             <p>
