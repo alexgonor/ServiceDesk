@@ -1,0 +1,4 @@
+generate_new_ticket:
+  cron: "* * * * *"
+  class: "TicketJob"
+  queue: default

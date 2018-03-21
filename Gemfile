@@ -24,6 +24,7 @@ gem "rails_12factor"
 gem "rmagick"
 gem "sass-rails", "~> 5.0"
 gem 'sidekiq'
+gem "sidekiq-cron", "~> 0.6.3"
 gem 'sidekiq-client-cli'
 gem "therubyracer", platforms: :ruby
 gem "turbolinks", "~> 5"
@@ -32,7 +33,7 @@ gem 'whenever'
 gem "will_paginate"
 
 group :development, :test do
-  gem "byebug", platforms: %i[mri mingw x64_mingw]
+  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "capybara", "~> 2.13"
   gem "database_cleaner"
   gem "factory_bot_rails"
@@ -51,4 +52,4 @@ group :development do
   gem "web-console", ">= 3.3.0"
 end
 
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

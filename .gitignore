@@ -9,3 +9,5 @@
 /.rvmrc
 /coverage
 /public/uploads
+/vendor/cache
+/.byebug_history
