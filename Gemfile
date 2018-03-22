@@ -7,6 +7,8 @@ end
 
 gem "rails", "~> 5.1.4"
 
+gem 'activeadmin'
+gem "active_admin_paranoia" , '~> 1.0.11'
 gem "bootstrap-sass"
 gem "carrierwave", "~> 1.0"
 gem "coffee-rails", "~> 4.2"

@@ -1,0 +1,11 @@
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Welcome to Service Desk, #{@current_user.username}
+    %br/
+    %p You have successfully saved your ticket.
+    %p
+      To view the ticket, just follow this link: #{ticket_url("en", @current_user.tickets.last.id)}
+    %p Thanks for joining and have a great day!

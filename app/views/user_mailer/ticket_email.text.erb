@@ -1,0 +1,15 @@
+Welcome to Service Desk, <%= @current_user.username %>
+===============================================
+
+You have successfully saved your ticket,
+
+To view the ticket, just follow this link: <%= ticket_url("en", @current_user.tickets.last.id)%>
+
+Thanks for joining and have a great day!
+
+
+
+
+
+
+
