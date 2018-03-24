@@ -21,6 +21,6 @@ class UserMailer < ApplicationMailer
   def closed_email(executor, ticket)
     @executor = executor
     @ticket = ticket
-    mail to: executor.email, subject: 'Your ticket was resolved'
+    mail to: executor.email, subject: 'The ticket you worked on was closed'
   end
 end

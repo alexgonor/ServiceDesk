@@ -73,8 +73,7 @@ class TicketsController < ApplicationController
   def take_in_work
     if current_user.executor? && @ticket.newly_created?
       @ticket.update(executor: current_user.email, status_of_ticket: 'in_progress')
-      @user = User.find_by(id: @ticket.user_id)
-      UserMailer.take_in_work_email(@user, @ticket).deliver
+      find_user_and_send_email
 
       redirect_to ticket_path
     else
@@ -85,10 +84,9 @@ class TicketsController < ApplicationController
   end
 
   def resolved
-    if current_user.executor? && @ticket.in_progress?
+    if current_user.email == @ticket.executor && @ticket.in_progress?
       @ticket.update(status_of_ticket: 'resolved')
-      @user = User.find_by(id: @ticket.user_id)
-      UserMailer.resolved_email(@user, @ticket).deliver
+      find_user_and_send_email
 
       redirect_to ticket_path
     else
@@ -101,8 +99,7 @@ class TicketsController < ApplicationController
   def closed
     if current_user.id == @ticket.user_id && @ticket.in_progress?
       @ticket.update(status_of_ticket: 'closed')
-      @executor = User.find_by(email: @ticket.executor)
-      UserMailer.closed_email(@executor, @ticket).deliver
+      find_executor_and_send_email
 
       redirect_to ticket_path
     else
@@ -132,5 +129,15 @@ class TicketsController < ApplicationController
       flash[:alert] = "That ticket doesn't belong to you!"
       redirect_to root_path
     end
+  end
+
+  def find_user_and_send_email
+    @user = User.find_by(id: @ticket.user_id)
+    UserMailer.take_in_work_email(@user, @ticket).deliver
+  end
+
+  def find_executor_and_send_email
+    @executor = User.find_by(email: @ticket.executor)
+    UserMailer.closed_email(@executor, @ticket).deliver
   end
 end
