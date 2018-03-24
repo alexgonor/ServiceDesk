@@ -1,0 +1,11 @@
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      The ticket you worked on was closed, #{@executor.username}
+    %br/
+    %p The ticket you worked on was closed.
+    %p
+      To view the ticket, just follow this link: #{ticket_url("en", @ticket.id)}
+    %p Thanks for joining and have a great day!
