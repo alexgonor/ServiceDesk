@@ -1,6 +1,7 @@
 # Ticket model
 class Ticket < ApplicationRecord
   belongs_to :user
+  has_many :chat_rooms, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   enum type_of_ticket: %i[repaire service_request permisiion_request]

@@ -59,7 +59,7 @@ en:
       responsible_unit: "Responsible unit"
       deadline: "Deadline"
       attachment: "Attachment"
-      
+
     show:
       ticket_params: "Ticket params"
       title: "Title"

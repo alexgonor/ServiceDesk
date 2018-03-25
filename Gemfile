@@ -23,6 +23,7 @@ gem "pg", "~> 0.18"
 gem "popper_js"
 gem "puma", "~> 3.7"
 gem "rails_12factor"
+gem 'redis'
 gem "rmagick"
 gem "sass-rails", "~> 5.0"
 gem 'sidekiq'

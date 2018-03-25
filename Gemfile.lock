@@ -414,6 +414,7 @@ DEPENDENCIES
   rails (~> 5.1.4)
   rails-controller-testing
   rails_12factor
+  redis
   rmagick
   rspec-rails (~> 3.7)
   rubocop
