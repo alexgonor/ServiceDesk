@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 20180322122930) do
     t.integer "executor"
     t.date "deadline"
     t.text "history"
-    t.string "attachment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.string "attachment"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
