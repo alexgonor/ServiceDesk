@@ -14,6 +14,10 @@ class User < ApplicationRecord
   validates_integrity_of  :avatar
   validates_processing_of :avatar
 
+  def self.options_for_select
+    order('LOWER(username)').map { |e| [e.username, e.id] }
+  end
+
   private
 
   def avatar_size_validation
@@ -23,4 +27,5 @@ class User < ApplicationRecord
   validates :position_in_the_company, presence: true
   validates :username, presence: true
   validates :type_of_user, presence: true
+  
 end
