@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  root to: 'chat_rooms#show'
+  root to: 'tickets#index'
 
   scope "(:locale)", locale: /en/ do
     resources :tickets do

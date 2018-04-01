@@ -26,6 +26,7 @@ gem "rails_12factor"
 gem 'redis'
 gem "rmagick"
 gem "sass-rails", "~> 5.0"
+gem 'searchkick'
 gem 'sidekiq'
 gem "sidekiq-cron", "~> 0.6.3"
 gem 'sidekiq-client-cli'

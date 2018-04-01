@@ -6,10 +6,13 @@ App.room = App.cable.subscriptions.create "ChatRoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    # Called when there's incoming data on the websocket for this channel
-    $messages = $('#messages')
-    $messages.append data
-    $messages.scrollTop $messages.prop('scrollHeight')
+    $('#messages').append data['message']
 
   speak: (message) ->
     @perform 'speak', message: message
+
+  $(document).on 'keypress', (event) ->
+    if event.keyCode is 13 # return/enter = send
+      App.room.speak event.target.value
+      event.target.value = ''
+      event.preventDefault()
