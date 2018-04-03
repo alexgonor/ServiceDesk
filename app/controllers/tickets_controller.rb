@@ -8,12 +8,14 @@ class TicketsController < ApplicationController
       Ticket,
       params[:filterrific],
       select_options: {
+        sorted_by: Ticket.options_for_sorted_by,
         with_type_of_ticket: %w[repaire service_request permisiion_request],
         with_status_of_ticket: %w[newly_created in_progress closed resolved],
-        with_responsible_unit: %w[repair service security]
+        with_responsible_unit: %w[repair service security],
+        with_user_id: User.options_for_select
       },
       default_filter_params: {},
-      available_filters: %i[with_type_of_ticket with_status_of_ticket with_responsible_unit]
+      available_filters: %i[sorted_by search_query with_type_of_ticket with_status_of_ticket with_responsible_unit with_user_id]
     )) || return
 
     @tickets = @filterrific.find.page(params[:page])
