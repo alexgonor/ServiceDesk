@@ -3,6 +3,8 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :tickets
+  has_many :chat_rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
