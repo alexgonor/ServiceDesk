@@ -1,7 +1,6 @@
 # Ticket model
 class Ticket < ApplicationRecord
-
-  belongs_to :user
+  belongs_to :user, foreign_key: 'user_id'
   has_many :comments, dependent: :destroy
 
   enum type_of_ticket: %i[repaire service_request permisiion_request]
