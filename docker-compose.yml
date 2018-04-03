@@ -1,0 +1,42 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.6
+    ports:
+      - 5440:5432
+  redis:
+    image: redis
+    ports:
+      - 6381:6379
+    env_file:
+      - .env
+  rails:
+    build: .
+    command: sh -c 'cd /service_desk && bundle install && rails s -b 0.0.0.0'
+    stdin_open: true
+    depends_on:
+      - db
+      - redis
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/service_desk
+      - service_desk-gems:/usr/local/bundle
+    tty: true
+    env_file:
+      - .env
+  sidekiq:
+    build: .
+    command: sh -c 'cd /service_desk && sidekiq'
+    stdin_open: true
+    depends_on:
+      - redis
+    volumes:
+      - .:/service_desk
+      - service_desk-gems:/usr/local/bundle
+    tty: true
+    env_file:
+      - .env
+volumes:
+  service_desk-gems:
+    driver: local

@@ -31,6 +31,10 @@
               = @ticket.user.email
           .form-group
             %p
+              %strong Executor:
+              = @ticket.executor
+          .form-group
+            %p
               %strong Deadline:
               = @ticket.deadline
           .form-group
@@ -41,5 +45,12 @@
           .form-group
             %h4 Add a comment:
             = render 'comments/form'
+          .form-group
+            - if current_user.email == @ticket.executor && @ticket.in_progress?
+              = button_to 'Resolved', resolved_path(@ticket, status_of_ticket: 'resolved'), method: :put
+            -elsif current_user.executor? && @ticket.newly_created?
+              = button_to 'Take in work', take_in_work_path(@ticket, status_of_ticket: 'take_in_work'), method: :put
+            -elsif current_user.id == @ticket.user_id && @ticket.in_progress?
+              = button_to 'Close', closed_path(@ticket, status_of_ticket: 'closed'), method: :put
           .form-group
             = link_to 'Back', tickets_path

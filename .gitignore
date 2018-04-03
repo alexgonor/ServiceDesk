@@ -11,3 +11,4 @@
 /public/uploads
 /vendor/cache
 /.byebug_history
+/.env

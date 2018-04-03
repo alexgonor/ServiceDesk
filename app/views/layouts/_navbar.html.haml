@@ -17,6 +17,10 @@
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
+            %a{:href => '/admin'}
+              %span.glyphicon.glyphicon-lock
+              Admin
+          %li
             %a{:href => new_ticket_path}
               %span.glyphicon.glyphicon-plus
               New ticket
@@ -33,7 +37,7 @@
               = current_user.username
           %li
             = link_to('Logout', destroy_user_session_path, :method => 'delete')
-              
+
         - else
           %li
             %a{:href => new_user_registration_path}
