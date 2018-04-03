@@ -2,6 +2,10 @@
   %h3.panel-heading= t('tickets.index.filter_of_tickets')
   = form_for_filterrific @filterrific do |f|
     %div
+      Search
+      = f.text_field :search_query,
+                         :class => 'filterrific-periodically-observed'
+
       = t('tickets.index.filter_type')
       \#{f.select( :with_type_of_ticket, @filterrific.select_options[:with_type_of_ticket], { include_blank: '- Any -', multiple: true } )}
 
@@ -10,6 +14,12 @@
 
       = t('tickets.index.filter_responsible_unit')
       \#{f.select( :with_responsible_unit, @filterrific.select_options[:with_responsible_unit], { include_blank: '- Any -', multiple: true } )}
+      
+      Author
+      \#{f.select( :with_user_id, @filterrific.select_options[:with_user_id], { include_blank: '- Any -', multiple: true } )}
+      
+      Sorted by
+      \#{f.select( :sorted_by, @filterrific.select_options[:sorted_by] )}
 
     %div
       = link_to(                 |
