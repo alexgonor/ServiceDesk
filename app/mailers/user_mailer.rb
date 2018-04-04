@@ -23,4 +23,10 @@ class UserMailer < ApplicationMailer
     @ticket = ticket
     mail to: executor.email, subject: 'The ticket you worked on was closed'
   end
+
+  def google_form_ticket(user, ticket)
+    @user = user
+    @ticket = ticket
+    mail to: user, subject: 'Your ticket has been saved'
+  end
 end
