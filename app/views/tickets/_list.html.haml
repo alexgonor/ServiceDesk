@@ -15,7 +15,7 @@
         %th= t('tickets._list.author')
         %th= t('tickets._list.executor')
         %th= t('tickets._list.deadline')
-        %th= t('tickets._list.history')
+        %th= t('tickets._list.priority')
         %th= t('tickets._list.attachment')
         %th= t('tickets._list.created_at')
         %th= t('tickets._list.updated_at')
@@ -32,7 +32,7 @@
               = ticket.user.email
             %td= ticket.executor
             %td= ticket.deadline
-            %td= ticket.history
+            %td= ticket.priority
             %td
               - if ticket.attachment?
                 = image_tag(ticket.attachment_url(:thumb))

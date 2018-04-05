@@ -27,6 +27,16 @@
               = form.label :responsible_unit
               %br/
               = form.select :responsible_unit, Ticket.responsible_units.keys, { include_blank: '- Choose unit -', multiple: true }
+            .form-group
+              = form.label :priority
+              %br/
+              - if current_user.tickets.newly_created.count + current_user.tickets.in_progress.count >= 10
+                = form.select :priority, Ticket.priorities.keys.first(1), { include_blank: '- Choose priority -', multiple: true }
+              - elsif current_user.tickets.newly_created.count + current_user.tickets.in_progress.count > 5
+                = form.select :priority, Ticket.priorities.keys.first(2), { include_blank: '- Choose priority -', multiple: true }
+              - else
+                = form.select :priority, Ticket.priorities.keys, { include_blank: '- Choose priority -', multiple: true }
+
             %p
             .form-group
               = form.label :detailed_description
@@ -41,6 +51,6 @@
               %br/
               = form.file_field :attachment
             %p
-              = form.submit "Save", class: 'btn btn-primary' 
+              = form.submit "Save", class: 'btn btn-primary'
             %p
             = link_to 'Back', tickets_path
