@@ -1,24 +1,23 @@
 #filterrific_results
   %div
-    = page_entries_info @tickets
+    = page_entries_info tickets
   .panel.panel-default
     %h1.panel-heading= t('tickets._list.list_of_tickets')
-    = button_to "New", new_ticket_path, method: :get
     .panel-body
       %table.table.table-striped.table-bordered.table-hover.table-condensed
         %tr
-        %th= t('tickets._list.status_of_ticket')
-        %th= t('tickets._list.type_of_ticket')
-        %th= t('tickets._list.title')
+        %th= filterrific_sorting_link(@filterrific, :status_of_ticket)
+        %th= filterrific_sorting_link(@filterrific, :type_of_ticket)
+        %th= filterrific_sorting_link(@filterrific, :title)
         %th= t('tickets._list.detailed_description')
-        %th= t('tickets._list.responsible_unit')
-        %th= t('tickets._list.author')
+        %th= filterrific_sorting_link(@filterrific, :responsible_unit)
+        %th= filterrific_sorting_link(@filterrific, :author)
         %th= t('tickets._list.executor')
-        %th= t('tickets._list.deadline')
+        %th= filterrific_sorting_link(@filterrific, :deadline)
         %th= t('tickets._list.priority')
         %th= t('tickets._list.attachment')
-        %th= t('tickets._list.created_at')
-        %th= t('tickets._list.updated_at')
+        %th= filterrific_sorting_link(@filterrific, :created_at)
+        %th= filterrific_sorting_link(@filterrific, :updated_at)
         %th= t('tickets._list.available_actions')
         - @tickets.each do |ticket|
           %tr
