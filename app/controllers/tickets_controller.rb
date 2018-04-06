@@ -119,7 +119,7 @@ class TicketsController < ApplicationController
 
   def ticket_params
     params.require(:ticket).permit(:title, :detailed_description, :type_of_ticket, :executor, :deadline,
-                                   :history, :status_of_ticket, :responsible_unit, :attachment)
+                                   :history, :status_of_ticket, :responsible_unit, :attachment, :priority)
   end
 
   def ticket

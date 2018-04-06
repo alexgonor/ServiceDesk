@@ -3,7 +3,6 @@
     = page_entries_info tickets
   .panel.panel-default
     %h1.panel-heading= t('tickets._list.list_of_tickets')
-    = button_to "New", new_ticket_path, method: :get
     .panel-body
       %table.table.table-striped.table-bordered.table-hover.table-condensed
         %tr
@@ -15,7 +14,7 @@
         %th= filterrific_sorting_link(@filterrific, :author)
         %th= t('tickets._list.executor')
         %th= filterrific_sorting_link(@filterrific, :deadline)
-        %th= t('tickets._list.history')
+        %th= t('tickets._list.priority')
         %th= t('tickets._list.attachment')
         %th= filterrific_sorting_link(@filterrific, :created_at)
         %th= filterrific_sorting_link(@filterrific, :updated_at)
@@ -32,7 +31,7 @@
               = ticket.user.email
             %td= ticket.executor
             %td= ticket.deadline
-            %td= ticket.history
+            %td= ticket.priority
             %td
               - if ticket.attachment?
                 = image_tag(ticket.attachment_url(:thumb))

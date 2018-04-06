@@ -27,7 +27,7 @@ services:
       - .env
   sidekiq:
     build: .
-    command: sh -c 'cd /service_desk && sidekiq'
+    command: sh -c 'cd /service_desk && bundle install && sidekiq'
     stdin_open: true
     depends_on:
       - redis
