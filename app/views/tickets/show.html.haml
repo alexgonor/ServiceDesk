@@ -53,4 +53,6 @@
             -elsif current_user.id == @ticket.user_id && @ticket.in_progress?
               = button_to 'Close', closed_path(@ticket, status_of_ticket: 'closed'), method: :put
           .form-group
+            = render 'chat_rooms/form'
+          .form-group
             = link_to 'Back', tickets_path

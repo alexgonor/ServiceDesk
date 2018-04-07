@@ -1,0 +1,66 @@
+Chat:<br />
+<% Message.all.last(10).each do |message| %>
+  <tr>
+    <td>
+      <b><%= message.user.username %></b>
+    </td>
+    <td>
+      <%= message.body %>
+    </td>
+  </tr>
+  <br />
+<% end %>
+<span id="chat_room"></span>
+<hr>
+Message:
+<br>
+<textarea id="msg" style="width:380px; height: 80px;"></textarea>
+
+<script>
+    $(document).ready(function(){
+
+        App.chat_room.received = function(data)
+        {
+            $("#chat_room").append("<b><%="#{current_user.username}"%></b> "+data['message']+"<br>")
+            $("#msg").val('')
+        }
+
+        $("#send").click(function(){
+            msg = $("#msg").val()
+            App.chat_room.send_msg(msg)
+        })
+
+
+        $('#msg').on("keyup", function(event){
+            if (event.keyCode == 13) {
+                var content = this.value;
+                var caret = getCaret(this);
+                if(event.shiftKey){
+                    this.value = content.substring(0, caret - 1) + "\n" + content.substring(caret, content.length);
+                    event.stopPropagation();
+                } else {
+                    this.value = content.substring(0, caret - 1) + content.substring(caret, content.length);
+                    App.chat_room.send_msg($(this).val())
+                }
+            }
+        });
+
+        function getCaret(el) {
+            if (el.selectionStart) {
+                return el.selectionStart;
+            } else if (document.selection) {
+                el.focus();
+                var r = document.selection.createRange();
+                if (r == null) {
+                    return 0;
+                }
+                var re = el.createTextRange(), rc = re.duplicate();
+                re.moveToBookmark(r.getBookmark());
+                rc.setEndPoint('EndToStart', re);
+                return rc.text.length;
+            }
+            return 0;
+        }
+
+    })
+</script>
