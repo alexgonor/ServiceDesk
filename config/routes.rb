@@ -7,10 +7,14 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   authenticate :user do
     mount Sidekiq::Web => '/sidekiq'
+
+
+
   end
 
   root to: 'tickets#index'

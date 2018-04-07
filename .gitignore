@@ -12,3 +12,4 @@
 /vendor/cache
 /.byebug_history
 /.env
+.env
