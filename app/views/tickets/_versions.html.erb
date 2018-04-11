@@ -1,0 +1,27 @@
+<h2>History of ticket changes</h2>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Date</th>
+      <th>Author</th>
+      <th>Event</th>
+      <th>Changes</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ticket.versions[1..-1].reverse.each do |version| %>
+      <tr>
+        <td><%= version.index %></td>
+        <td><%= version.created_at %></td>
+        <td><%= User.find_by(id: version.whodunnit).username %></td>
+        <td><%= version.event.humanize %></td>
+        <td><%= link_to 'Changes', diff_ticket_version_path(ticket, version) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

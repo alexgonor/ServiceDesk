@@ -1,6 +1,7 @@
 # Ticket model
 class Ticket < ApplicationRecord
   belongs_to :user, foreign_key: 'user_id'
+  has_paper_trail
   has_many :comments, dependent: :destroy
 
   enum type_of_ticket: %i[repaire service_request permisiion_request]
@@ -25,9 +26,9 @@ class Ticket < ApplicationRecord
       with_created_at_gte
     ]
   )
-  
+
   self.per_page = 10
-  
+
   scope :search_query, lambda { |query|
     return nil  if query.blank?
     # condition query, parse into individual keywords
@@ -78,7 +79,7 @@ class Ticket < ApplicationRecord
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end
   }
-  
+
   scope :with_type_of_ticket, lambda { |type_of_tickets|
     return nil if type_of_tickets == ['']
     where(type_of_ticket: [*type_of_tickets])
@@ -102,7 +103,7 @@ class Ticket < ApplicationRecord
     return nil if created_at_gtes == ['']
     where('tickets.created_at >= ?', ref_date)
   }
-  
+
   delegate :username, :to => :user, :prefix => true
 
   def self.options_for_sorted_by
