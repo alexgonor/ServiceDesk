@@ -20,6 +20,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :tickets do
+    resources :versions, only: [:destroy] do
+      member do
+        get :diff, to: 'versions#diff'
+      end
+    end
+  end
+
   scope path: 'ticket/:id', controller: :tickets do
     put '/:status_of_ticket', to: 'tickets#resolved', status_of_ticket: /resolved/, as: :resolved
     put '/:status_of_ticket', to: 'tickets#take_in_work', status_of_ticket: /take_in_work/, as: :take_in_work

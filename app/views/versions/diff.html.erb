@@ -1,0 +1,35 @@
+<div class='row mt'>
+  <div class='col-sm-12'>
+    <h2><%= "Changes between Version #{@version.id} and Current Version" %></h2>
+    <style><%= Diffy::CSS %></style>
+    <div class='well diff'>
+      <p>
+        <strong>Title:</strong>
+        <%= diff(@version.reify.title, @ticket.title) %>
+      </p>
+      <p>
+        <strong>Detailed description:</strong>
+        <%= diff(@version.reify.detailed_description, @ticket.detailed_description) %>
+      </p>
+      <p>
+        <strong>Type of ticket:</strong>
+        <%= diff(@version.reify.type_of_ticket, @ticket.type_of_ticket) %>
+      </p>
+      <p>
+        <strong>Responsible unit:</strong>
+        <%= diff(@version.reify.responsible_unit, @ticket.responsible_unit) %>
+      </p>
+      <p>
+        <strong>Deadline:</strong>
+        <%= diff(@version.reify.deadline, @ticket.deadline) %>
+      </p>
+      <p>
+        <strong>Status of ticket:</strong>
+        <%= diff(@version.reify.status_of_ticket, @ticket.status_of_ticket) %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class='fr'>
+  <%= link_to 'Back', ticket_path(@ticket), class: 'btn btn-danger' %>
+</div>

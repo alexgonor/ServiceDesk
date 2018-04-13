@@ -13,12 +13,14 @@ gem "bootstrap-sass"
 gem "carrierwave", "~> 1.0"
 gem "coffee-rails", "~> 4.2"
 gem "devise"
+gem 'diffy'
 gem "filterrific"
 gem 'google_drive'
 gem "haml"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "mini_magick"
+gem 'paper_trail'
 gem "pg", "~> 0.18"
 gem "popper_js"
 gem "puma", "~> 3.7"
