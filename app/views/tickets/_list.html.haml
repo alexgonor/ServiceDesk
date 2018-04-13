@@ -4,7 +4,7 @@
   .panel.panel-default
     %h1.panel-heading= t('tickets._list.list_of_tickets')
     .panel-body
-      %table.table.table-striped.table-bordered.table-hover.table-condensed
+      %table.table.table-striped.table-hover.table-condensed
         %tr
         %th= filterrific_sorting_link(@filterrific, :status_of_ticket)
         %th= filterrific_sorting_link(@filterrific, :type_of_ticket)
@@ -14,7 +14,7 @@
         %th= filterrific_sorting_link(@filterrific, :author)
         %th= t('tickets._list.executor')
         %th= filterrific_sorting_link(@filterrific, :deadline)
-        %th= t('tickets._list.priority')
+        %th= filterrific_sorting_link(@filterrific, :priority)
         %th= t('tickets._list.attachment')
         %th= filterrific_sorting_link(@filterrific, :created_at)
         %th= filterrific_sorting_link(@filterrific, :updated_at)
