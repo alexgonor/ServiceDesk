@@ -5,7 +5,7 @@
       Search
       = f.text_field :search_query,
                          :class => 'filterrific-periodically-observed'
-
+      %p
       = t('tickets.index.filter_type')
       \#{f.select( :with_type_of_ticket, @filterrific.select_options[:with_type_of_ticket], { include_blank: '- Any -', multiple: true } )}
 
@@ -14,7 +14,10 @@
 
       = t('tickets.index.filter_responsible_unit')
       \#{f.select( :with_responsible_unit, @filterrific.select_options[:with_responsible_unit], { include_blank: '- Any -', multiple: true } )}
-      
+
+      Priority
+      \#{f.select( :with_priority, @filterrific.select_options[:with_priority], { include_blank: '- Any -', multiple: true } )}
+
       Author
       \#{f.select( :with_user_id, @filterrific.select_options[:with_user_id], { include_blank: '- Any -', multiple: true } )}
       

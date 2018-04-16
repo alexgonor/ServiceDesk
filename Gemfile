@@ -11,6 +11,7 @@ gem 'activeadmin'
 gem "active_admin_paranoia" , '~> 1.0.11'
 gem "bootstrap-sass"
 gem "carrierwave", "~> 1.0"
+gem 'cloudinary'
 gem "coffee-rails", "~> 4.2"
 gem "devise"
 gem 'diffy'
