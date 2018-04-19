@@ -1,5 +1,9 @@
 # Ticket model
 class Ticket < ApplicationRecord
+  after_create :send_create_telegram_message
+  after_update :send_update_telegram_message
+  after_destroy :send_destroy_telegram_message
+
   belongs_to :user, foreign_key: 'user_id'
   has_paper_trail
   has_many :comments, dependent: :destroy
@@ -121,5 +125,24 @@ class Ticket < ApplicationRecord
   def decorated_created_at
     created_at.to_date.to_s(:long)
   end
+
+  private
+
+   def ticket_author
+     user = User.find_by(id: user_id)
+     user.username
+   end
+
+   def send_create_telegram_message
+     TelegramBotJob.new.perform_async_create(id, title, ticket_author)
+   end
+
+   def send_update_telegram_message
+     TelegramBotJob.new.perform_async_update(id, title, ticket_author)
+   end
+
+   def send_destroy_telegram_message
+     TelegramBotJob.new.perform_async_destroy(id, title, ticket_author)
+   end
 
 end

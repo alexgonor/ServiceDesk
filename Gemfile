@@ -32,6 +32,8 @@ gem 'searchkick'
 gem 'sidekiq'
 gem "sidekiq-cron", "~> 0.6.3"
 gem 'sidekiq-client-cli'
+gem "telegram-bot", github: "telegram-bot-rb/telegram-bot", branch: "master"
+gem 'telegram-bot-ruby'
 gem "therubyracer", platforms: :ruby
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"

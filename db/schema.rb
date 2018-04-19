@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410171906) do
+ActiveRecord::Schema.define(version: 20180412180637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,8 @@ ActiveRecord::Schema.define(version: 20180410171906) do
     t.string "username"
     t.string "avatar"
     t.boolean "admin", default: false
+    t.string "telegram_id"
+    t.jsonb "bot_command_data", default: {}
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

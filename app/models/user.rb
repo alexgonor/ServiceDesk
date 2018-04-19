@@ -29,5 +29,4 @@ class User < ApplicationRecord
   validates :position_in_the_company, presence: true
   validates :username, presence: true
   validates :type_of_user, presence: true
-  
 end
