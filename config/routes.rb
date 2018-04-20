@@ -37,5 +37,5 @@ Rails.application.routes.draw do
   get '/:locale' => 'tickets#index'
 
   mount ActionCable.server => '/cable'
-
+  
 end

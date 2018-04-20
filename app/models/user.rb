@@ -3,7 +3,6 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :tickets
-  has_many :chat_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -29,5 +28,4 @@ class User < ApplicationRecord
   validates :position_in_the_company, presence: true
   validates :username, presence: true
   validates :type_of_user, presence: true
-  
 end
