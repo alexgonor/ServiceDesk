@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20180412180637) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.integer "priority"
+    t.string "attachment"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 

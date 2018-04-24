@@ -28,6 +28,15 @@
               %br/
               = form.select :responsible_unit, Ticket.responsible_units.keys
             .form-group
+              = form.label :priority
+              %br/
+              - if current_user.tickets.newly_created.count + current_user.tickets.in_progress.count >= 10
+                = form.select :priority, Ticket.priorities.keys.first(1)
+              - elsif current_user.tickets.newly_created.count + current_user.tickets.in_progress.count > 5
+                = form.select :priority, Ticket.priorities.keys.first(2)
+              - else
+                = form.select :priority, Ticket.priorities.keys
+            .form-group
               = form.label :detailed_description
               %br/
               = form.text_area :detailed_description, size: "200x10", class: "form-control"
@@ -40,5 +49,5 @@
               %br/
               = form.file_field :attachment
             %p
-              = form.submit "Update", class: 'btn btn-primary' 
+              = form.submit "Update", class: 'btn btn-primary'
             = link_to 'Back', tickets_path

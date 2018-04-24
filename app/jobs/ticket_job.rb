@@ -16,7 +16,7 @@ class TicketJob < ApplicationJob
     @ticket_email = Hash[*pre_hash]
     @user_email = @ticket_email.values_at('email').join('')
     user = User.find_by(email: @user_email)
-    @user_id = { user_id: user.id, status_of_ticket: 'newly_created' }
+    @user_id = { user_id: user.id, status_of_ticket: 'newly_created', priority: 'low' }
     ticket_create
   end
 

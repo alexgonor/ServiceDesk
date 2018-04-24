@@ -12,10 +12,11 @@ class TicketsController < ApplicationController
         with_type_of_ticket: %w[repaire service_request permisiion_request],
         with_status_of_ticket: %w[newly_created in_progress closed resolved],
         with_responsible_unit: %w[repair service security],
+        with_priority: %w[low middle high],
         with_user_id: User.options_for_select
       },
       default_filter_params: {},
-      available_filters: %i[sorted_by search_query with_type_of_ticket with_status_of_ticket with_responsible_unit with_user_id]
+      available_filters: %i[sorted_by search_query with_type_of_ticket with_status_of_ticket with_responsible_unit with_priority with_user_id]
     )) || return
 
     @tickets = @filterrific.find.page(params[:page])
@@ -119,7 +120,7 @@ class TicketsController < ApplicationController
 
   def ticket_params
     params.require(:ticket).permit(:title, :detailed_description, :type_of_ticket, :executor, :deadline,
-                                   :history, :status_of_ticket, :responsible_unit, :attachment)
+                                   :history, :status_of_ticket, :responsible_unit, :attachment, :priority)
   end
 
   def ticket

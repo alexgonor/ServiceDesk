@@ -11,10 +11,11 @@ class Ticket < ApplicationRecord
   enum type_of_ticket: %i[repaire service_request permisiion_request]
   enum status_of_ticket: %i[newly_created in_progress closed resolved]
   enum responsible_unit: %i[repair service security]
+  enum priority: %i[low middle high]
 
   validates :title, length: { minimum: 10, maximum: 100 }, presence: true, uniqueness: true
   validates :detailed_description, length: { minimum: 20, maximum: 200 }
-  validates :deadline, :type_of_ticket, :responsible_unit, presence: true
+  validates :deadline, :type_of_ticket, :responsible_unit, :priority, presence: true
 
   mount_uploader :attachment, AttachmentUploader
 
@@ -26,6 +27,7 @@ class Ticket < ApplicationRecord
       with_type_of_ticket
       with_status_of_ticket
       with_responsible_unit
+      with_priority
       with_user_id
       with_created_at_gte
     ]
@@ -77,6 +79,8 @@ class Ticket < ApplicationRecord
         order("tickets.status_of_ticket #{ direction }")
     when /^responsible_unit_/
         order("tickets.responsible_unit #{ direction }")
+    when /^priority_/
+        order("tickets.priority #{ direction }")
     when /^author_/
       order("LOWER(users.username) #{ direction }").includes(:user).references(:user)
     else
@@ -97,6 +101,11 @@ class Ticket < ApplicationRecord
   scope :with_responsible_unit, lambda { |responsible_units|
     return nil if responsible_units == ['']
     where(responsible_unit: [*responsible_units])
+  }
+  
+  scope :with_priority, lambda { |priority|
+    return nil if priority == ['']
+    where(priority: [*priority])
   }
 
   scope :with_user_id, lambda { |user_ids|

@@ -5,13 +5,14 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails", "~> 5.1.4"
+gem "rails", "5.1.4"
 
 gem 'activeadmin'
 gem "active_admin_paranoia" , '~> 1.0.11'
 gem "bootstrap-sass"
 gem "carrierwave", "~> 1.0"
 gem 'celluloid-io'
+gem 'cloudinary'
 gem "coffee-rails", "~> 4.2"
 gem "devise"
 gem 'diffy'

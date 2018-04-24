@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dlzi6ymc4
+  api_key: '828225589435875'
+  api_secret: 86e87MXC-jnR4AOkQFzoXe-VMdg
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dlzi6ymc4
+  api_key: '828225589435875'
+  api_secret: 86e87MXC-jnR4AOkQFzoXe-VMdg
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dlzi6ymc4
+  api_key: '828225589435875'
+  api_secret: 86e87MXC-jnR4AOkQFzoXe-VMdg
+  enhance_image_tag: true
+  static_image_support: false
