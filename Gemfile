@@ -11,6 +11,7 @@ gem 'activeadmin'
 gem "active_admin_paranoia" , '~> 1.0.11'
 gem "bootstrap-sass"
 gem "carrierwave", "~> 1.0"
+gem 'celluloid-io'
 gem 'cloudinary'
 gem "coffee-rails", "~> 4.2"
 gem "devise"
@@ -33,6 +34,8 @@ gem 'searchkick'
 gem 'sidekiq'
 gem "sidekiq-cron", "~> 0.6.3"
 gem 'sidekiq-client-cli'
+gem "slack-notifier"
+gem 'slack-ruby-client'
 gem "telegram-bot", github: "telegram-bot-rb/telegram-bot", branch: "master"
 gem 'telegram-bot-ruby'
 gem "therubyracer", platforms: :ruby

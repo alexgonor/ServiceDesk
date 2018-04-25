@@ -12,7 +12,7 @@ services:
       - .env
   rails:
     build: .
-    command: sh -c 'cd /service_desk && bundle install && rake db:migrate && rails s -b 0.0.0.0 && rails runner lib/servicedesk_bot.rb'
+    command: sh -c 'cd /service_desk && bundle install && rake db:migrate && rails s -b 0.0.0.0 && rails runner lib/servicedesk_bot.rb && rails runner lib/slack_bot.rb'
     stdin_open: true
     depends_on:
       - db

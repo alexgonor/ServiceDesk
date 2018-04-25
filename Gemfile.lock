@@ -93,6 +93,27 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    celluloid (0.17.3)
+      celluloid-essentials
+      celluloid-extras
+      celluloid-fsm
+      celluloid-pool
+      celluloid-supervision
+      timers (>= 4.1.1)
+    celluloid-essentials (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-extras (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-fsm (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-io (0.17.3)
+      celluloid (>= 0.17.2)
+      nio4r (>= 1.1)
+      timers (>= 4.1.1)
+    celluloid-pool (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-supervision (0.20.6)
+      timers (>= 4.1.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
@@ -143,11 +164,14 @@ GEM
       railties (>= 3.0.0)
     faraday (0.14.0)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.12.2)
+      faraday (>= 0.7.4, < 1.0)
     ffi (1.9.23)
     filterrific (5.0.1)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    gli (2.17.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     google-api-client (0.19.8)
@@ -176,6 +200,7 @@ GEM
       actionpack (>= 4.1, < 5.2)
       activesupport (>= 4.1, < 5.2)
     hashie (3.5.7)
+    hitimes (1.2.6)
     httpclient (2.8.3)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -383,6 +408,14 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    slack-notifier (2.3.2)
+    slack-ruby-client (0.11.1)
+      activesupport
+      faraday (>= 0.9)
+      faraday_middleware
+      gli
+      hashie
+      websocket-driver
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -406,6 +439,8 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    timers (4.1.2)
+      hitimes
     turbolinks (5.1.0)
       turbolinks-source (~> 5.1)
     turbolinks-source (5.1.0)
@@ -446,6 +481,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   carrierwave (~> 1.0)
+  celluloid-io
   coffee-rails (~> 4.2)
   database_cleaner
   devise
@@ -477,6 +513,8 @@ DEPENDENCIES
   sidekiq-client-cli
   sidekiq-cron (~> 0.6.3)
   simplecov
+  slack-notifier
+  slack-ruby-client
   spring
   spring-watcher-listen (~> 2.0.0)
   telegram-bot!

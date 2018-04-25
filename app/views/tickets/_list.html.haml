@@ -9,10 +9,10 @@
         %th= filterrific_sorting_link(@filterrific, :status_of_ticket)
         %th= filterrific_sorting_link(@filterrific, :type_of_ticket)
         %th= filterrific_sorting_link(@filterrific, :title)
-        %th= t('tickets._list.detailed_description')
+        -# %th= t('tickets._list.detailed_description')
         %th= filterrific_sorting_link(@filterrific, :responsible_unit)
         %th= filterrific_sorting_link(@filterrific, :author)
-        %th= t('tickets._list.executor')
+        -# %th= t('tickets._list.executor')
         %th= filterrific_sorting_link(@filterrific, :deadline)
         %th= filterrific_sorting_link(@filterrific, :priority)
         %th= t('tickets._list.attachment')
@@ -24,12 +24,12 @@
             %td= ticket.status_of_ticket
             %td= ticket.type_of_ticket
             %td= ticket.title
-            %td= ticket.detailed_description
+            -# %td= ticket.detailed_description
             %td= ticket.responsible_unit
             %td
               = ticket.user.username
               = ticket.user.email
-            %td= ticket.executor
+            -# %td= ticket.executor
             %td= ticket.deadline
             %td= ticket.priority
             %td
