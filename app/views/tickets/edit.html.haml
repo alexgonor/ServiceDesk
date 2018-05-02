@@ -39,8 +39,7 @@
             .form-group
               = form.label :detailed_description
               %br/
-              = form.text_area :detailed_description, size: "200x10", class: "form-control"
-            .form-group
+              = form.text_area :detailed_description, size: "200x10", class: "ckeditor", id: "detailed_description"
               = form.label :deadline
               %br/
               = form.date_field :deadline
@@ -51,3 +50,5 @@
             %p
               = form.submit "Update", class: 'btn btn-primary'
             = link_to 'Back', tickets_path
+:javascript
+  CKEDITOR.replace('detailed_description')

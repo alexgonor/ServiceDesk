@@ -14,14 +14,16 @@
   </thead>
 
   <tbody>
-    <% @ticket.versions[1..-1].reverse.each do |version| %>
-      <tr>
-        <td><%= version.index %></td>
-        <td><%= version.created_at %></td>
-        <td><%= User.find_by(id: version.whodunnit).username %></td>
-        <td><%= version.event.humanize %></td>
-        <td><%= link_to 'Changes', diff_ticket_version_path(ticket, version) %></td>
-      </tr>
+    <%if @ticket.versions.length > 1 %>
+      <% @ticket.versions[1..-1].reverse.each do |version| %>
+        <tr>
+          <td><%= version.index %></td>
+          <td><%= version.created_at %></td>
+          <td><%= User.find_by(id: version.whodunnit).username %></td>
+          <td><%= version.event.humanize %></td>
+          <td><%= link_to 'Changes', diff_ticket_version_path(ticket, version) %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
