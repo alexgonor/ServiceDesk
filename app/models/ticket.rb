@@ -14,7 +14,7 @@ class Ticket < ApplicationRecord
   enum priority: %i[low middle high]
 
   validates :title, length: { minimum: 10, maximum: 100 }, presence: true, uniqueness: true
-  validates :detailed_description, length: { minimum: 20, maximum: 200 }
+  validates :detailed_description, length: { minimum: 20, maximum: 1000 }
   validates :deadline, :type_of_ticket, :responsible_unit, :priority, presence: true
 
   mount_uploader :attachment, AttachmentUploader

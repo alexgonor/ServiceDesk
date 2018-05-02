@@ -39,8 +39,7 @@
             .form-group
               = form.label :detailed_description
               %br/
-              = form.text_area :detailed_description, size: "200x10", class: "form-control"
-            .form-group
+              = form.text_area :detailed_description, size: "200x10", class: "ckeditor"
               = form.label :deadline
               %br/
               = form.date_field :deadline

@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery3
+//= require ckeditor/init
 //= require popper
 //= require bootstrap-sprockets
 //= require rails-ujs
