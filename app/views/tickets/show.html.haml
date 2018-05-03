@@ -1,6 +1,6 @@
 .container
   .row
-    .col-md-6.col-md-offset-3
+    .col-md-8.col-md-offset-2
       .panel.panel-default
         .panel-heading
           .lead Ticket params
@@ -20,7 +20,7 @@
           .form-group
             %p
               %strong Detailed description:
-              = @ticket.detailed_description
+              = @ticket.detailed_description.html_safe
           .form-group
             %p
               %strong Responsible unit:
