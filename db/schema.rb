@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20180501153551) do
 
   # These are extensions that must be enabled in order to support this database
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 20180501153551) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+
   create_table "messages", force: :cascade do |t|
     t.text "body"
     t.bigint "user_id"
@@ -86,6 +88,14 @@ ActiveRecord::Schema.define(version: 20180501153551) do
     t.datetime "updated_at", null: false
     t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+   end
+  create_table "identities", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "provider"
+    t.string "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -125,6 +135,8 @@ ActiveRecord::Schema.define(version: 20180501153551) do
     t.boolean "admin", default: false
     t.string "telegram_id"
     t.jsonb "bot_command_data", default: {}
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -145,4 +157,5 @@ ActiveRecord::Schema.define(version: 20180501153551) do
   add_foreign_key "comments", "users"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "identities", "users"
 end

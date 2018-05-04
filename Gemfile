@@ -24,6 +24,9 @@ gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "mini_magick"
 gem 'paper_trail'
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-twitter"
 gem "pg", "~> 0.18"
 gem "popper_js"
 gem "puma", "~> 3.7"
@@ -53,8 +56,9 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem "rspec-rails", "~> 3.7"
   gem "selenium-webdriver"
-  gem 'simplecov', require: false, group: :test
+  gem 'simplecov', require: false
   gem "shoulda-matchers", "~> 3.1"
+  gem 'dotenv-rails'
 end
 
 group :development do
